@@ -1,0 +1,31 @@
+Python-specific
+
+pycache/ *.pyc *.pyo *.pyd .Python *.egg-info/ dist/ build/ *.egg
+
+Virtual environment
+
+.venv/ venv/ env/ ENV/
+
+IDE and editor files
+
+.idea/ .vscode/ *.sublime-project *.sublime-workspace
+
+System files
+
+.DS_Store Thumbs.db
+
+Cache and temporary files
+
+*.cache *.log *.swp *~
+
+Flask-specific
+
+instance/ # Flask instance folder (for SQLite, if used) *.db # SQLite database files (if not part of the project) *.sqlite3
+
+Frontend-specific
+
+node_modules/ *.min.js.map *.min.css.map
+
+Other
+
+*.bak *.backup
