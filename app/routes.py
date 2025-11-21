@@ -4,4 +4,16 @@ bp = Blueprint('main', __name__)
 
 @bp.route('/')
 def index():
-    return "Hello VibeMe! Приложение запущено!"
+    return render_template('index.html')
+
+@bp.route('/login')
+def login():
+    return render_template('login.html')
+
+@bp.route('/register')
+def register():
+    return render_template('register.html')
+
+@bp.route('/mood')
+def mood_form():
+    return render_template('mood_form.html')
