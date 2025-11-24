@@ -1,17 +1,25 @@
+import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from config import Config
+from flask_login import LoginManager
 
 db = SQLAlchemy()
+login_manager = LoginManager()
 
 
 def create_app():
-    app = Flask(__name__)
-    app.config.from_object(Config)
+    # Явно указываем корневую папку
+    app = Flask(__name__,
+                template_folder=os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'templates'),
+                static_folder=os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'static'))
+
+    app.config.from_object('config.Config')
 
     db.init_app(app)
+    login_manager.init_app(app)
+    login_manager.login_view = 'main.login'
 
-    from app import routes, models 
+    from app import routes
     app.register_blueprint(routes.bp)
 
     return app
